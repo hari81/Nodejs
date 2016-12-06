@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Coffee Application</title>
+<style type="text/css">
+    h1{text-align: center; border: red; background-color:brown;}
+    body{ background-image: url("C:\\fullstack\\coffee\\Coffee.jpg"); color: red}
+    table, tr, td,th {border:2px black solid; border-collapse: collapse;}
+</style>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script type="text/javascript">
+  var app =  angular.module("myApp", []);
+  app.controller("cntl",function($scope){
+    $scope.totalPrice = function(){
+        $scope.total = $scope.q1*3.5 + $scope.q2 * 2.5 + $scope.q3*3 + $scope.q4*4;
+    }
+  });
+
+</script>
+<script type="text/javascript">
+
+
+
+            function selectedItems(){
+               document.getElementById("ttp").value =+1
+            }
+</script>
+</head>
+<body >
+    <h1> Coffee Application using HTML, CSS, AngularJS </h1>
+
+
+<div style='text-align:center' ng-app="myApp" ng-controller="cntl">
+<center>
+        <table style="width:250px; height:200px; ">
+            <caption style="font-weight:bold;font-size: 25px"> Coffee Table</caption>
+            <tr>
+            <th>Coffee Type</th>
+            <th>Quantity</th>
+            <th style="display:none;">Price</th>
+            </tr>
+            <tr>
+            <td>  Latee($3.50) </td>
+            <td><input type="number" max="50" min="0" maxlength="2" id="lq" change="document.getElementById("nlap").style.display="true" ng-model="q1"></td>
+            <td><input type="number" id = "nlap" name="lla" max="50" min="1" disabled="true" style="display: none;"> </td>
+            </tr>
+            <tr>
+            <td> Cappuccino ($2.50)</td>
+            <td><input type="number" id="cq" min="0" max="50" ng-model="q2"> </td>
+            <td> <input type="number" id="ncap" maxlength="1" min="0" max="50" disabled="true" style="display:none;"></td>
+            </tr>
+            <tr>
+            <td> Mocha($3.00) </td>
+            <td><input type="number" id="mq" min="0" max="50" maxlength="2" ng-model="q3"></td>
+            <td><input type="number" name="nmop" id="nmoc" disabled="true"  min="0" max="5" style="display:none;"> </td>
+            </tr>
+            <tr>
+            <td> Americano($4.00) </td>
+            <td><input type="number" min="0" max="50" id="aq" maxlength="2"  ng-model="q4"></td>
+
+            <td> <input type="number" id="namp" disabled="true" min="0" max="5" style="display:none;"></td>
+            </tr>
+       </table>
+       <br>
+       <button name="bprice"  style="height:25px" ng-click="totalPrice()"> CheckOut</button>
+       <h3> Total Price:{{total | currency}} <!--input type= "text" id="ttp" value="TotalPrice" style="width:70px; color:red"--> </h3>
+</center>
+</div>
+
+</body>
+</html>
